@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Acesse seu painel Fígado Leve com os elixires da roça, cardápio de 14 dias e conselhos de saúde da Dona Sebastiana.">
+  <meta name="theme-color" content="#16324A">
+  <title>Plataforma de Leitura - Fígado Leve</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Botão Hambúrguer Mobile (Grande e Acessível) -->
+  <button id="menu-toggle" class="menu-toggle" aria-label="Abrir Menu Lateral">
+    ☰
+  </button>
+
+  <!-- Overlay para fechar sidebar mobile ao clicar fora -->
+  <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+  <div class="app-container">
+    
+    <!-- Sidebar / Menu Lateral -->
+    <aside id="sidebar" class="sidebar">
+      
+      <!-- Header da Sidebar -->
+      <div class="sidebar-header">
+        <div class="logo-container">
+          <span class="logo-icon">🌿</span>
+          <span class="logo-text">Fígado Leve</span>
+        </div>
+        <span class="logo-subtext">Plataforma Dona Sebastiana</span>
+      </div>
+
+      <!-- Barra de Progresso de Leitura -->
+      <div class="progresso-container">
+        <div class="progresso-texto">
+          <span>Seu Progresso:</span>
+        </div>
+        <div class="progresso-barra-bg">
+          <div id="barra-progresso-fill" class="progresso-barra-fill"></div>
+        </div>
+        <div id="texto-progresso" style="font-size: 0.85rem; margin-top: 0.5rem; opacity: 0.9; font-family: sans-serif;">
+          0 de 45 páginas (0%)
+        </div>
+      </div>
+
+      <!-- Menu de Navegação Injetado via JS -->
+      <nav id="sidebar-menu" class="sidebar-menu">
+        <!-- Itens do menu serão injetados pelo reader.js -->
+      </nav>
+
+    </aside>
+
+    <!-- Área de Conteúdo Principal -->
+    <main id="content-area" class="main-content">
+      <!-- O artigo selecionado será renderizado dinamicamente pelo reader.js -->
+      <div style="display: flex; justify-content: center; align-items: center; min-height: 50vh;">
+        <p style="font-size: 1.3rem; font-style: italic; color: var(--texto-secundario);">Carregando plataforma da Dona Sebastiana, por favor aguarde...</p>
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Importações de Dados e Lógica -->
+  <script src="data.js"></script>
+  <script src="reader.js"></script>
+</body>
+</html>
