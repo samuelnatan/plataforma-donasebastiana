@@ -44,6 +44,10 @@ const menuItemsList = [
   
   { id: "tabela-sequenciamento", titulo: "Tabela de Sequenciamento", icon: "📋", tipo: "sequenciamento" },
   
+  { id: "sos-glicose", titulo: "SOS Glicose (Acima de 180)", icon: "🆘", tipo: "exclusivos" },
+  { id: "lista-compras", titulo: "Lista de Compras Inteligente", icon: "🛒", tipo: "exclusivos" },
+  { id: "checklist-diario", titulo: "Checklist Diário (14 Dias)", icon: "✅", tipo: "exclusivos" },
+  
   // BÔNUS: SOBREMESAS (BLOQUEADO ORDER BUMP)
   { id: "sobremesa-mousse-abacate", titulo: "Doce: 1. Mousse de Abacate", icon: "🥑", tipo: "sobremesas", sub: true, bloqueado: true },
   { id: "sobremesa-brigadeiro", titulo: "Doce: 2. Brigadeiro Fit", icon: "🍫", tipo: "sobremesas", sub: true, bloqueado: true },
@@ -73,7 +77,8 @@ function obterRotuloCategoria(tipo) {
     referencias: "Planos e Diário",
     goles: "Bônus: Elixires da Roça",
     sequenciamento: "Bônus: Sequenciamento",
-    sobremesas: "Bônus: Sobremesas"
+    sobremesas: "Bônus: Sobremesas",
+    exclusivos: "Bônus Exclusivo"
   };
   return mapa[tipo] || "";
 }
@@ -197,6 +202,7 @@ function renderizarSidebar() {
     else if (item.tipo === "goles") secaoNome = "Bônus: Elixires da Roça";
     else if (item.tipo === "sequenciamento") secaoNome = "Bônus: Sequenciamento";
     else if (item.tipo === "sobremesas") secaoNome = "Bônus: Sobremesas (Bump)";
+    else if (item.tipo === "exclusivos") secaoNome = "Bônus Exclusivos";
 
     if (secaoNome !== secaoAtual) {
       secaoAtual = secaoNome;
@@ -292,6 +298,12 @@ function carregarArtigo(id) {
     renderizarDiario();
   } else if (id === "referencias") {
     renderizarReferencias();
+  } else if (id === "sos-glicose") {
+    renderizarTextoExplicativo(platformData.sosGlicose, itemConfig);
+  } else if (id === "lista-compras") {
+    renderizarTextoExplicativo(platformData.listaCompras, itemConfig);
+  } else if (id === "checklist-diario") {
+    renderizarChecklistDiario();
   } else if (itemConfig.tipo === "goles") {
     const data = platformData.goles.find(r => r.id === id);
     renderizarReceita(data, itemConfig);
@@ -1004,3 +1016,104 @@ function configurarEventosRodape(id) {
     }
   }
 }
+
+// Renderiza o Checklist Diário de 14 Dias (Bônus Exclusivo)
+function renderizarChecklistDiario() {
+  let checklistSalvo = {};
+  const salvo = localStorage.getItem("checklist_diario_completo");
+  if (salvo) {
+    checklistSalvo = JSON.parse(salvo);
+  }
+
+  let html = `
+    <div class="artigo-container">
+      <div class="eyebrow">${obterRotuloCategoria("exclusivos")}</div>
+      <h1>Checklist Diário do Fígado Leve (14 Dias)</h1>
+      <div class="citacao-abertura">
+        <p class="citacao-abertura-texto">Vá marcando cada tarefa concluída do seu dia, minha filha. É assim que a gente cria o hábito saudável de se cuidar com carinho.</p>
+      </div>
+      <div class="artigo-corpo">
+        <p>Abaixo está o seu painel de acompanhamento prático para os 14 dias do protocolo. Para cada dia, tente cumprir todas as 5 tarefas fundamentais da Sincronia Digestiva e dos elixires. Suas marcações ficam salvas automaticamente no seu navegador!</p>
+  `;
+
+  for (let dia = 1; dia <= 14; dia++) {
+    const tarefas = [
+      { id: "gole", label: "🌱 Tomei o Gole da Manhã (em jejum)" },
+      { id: "ordem_almoco", label: "🥗 Comi na Ordem Certa no Almoço" },
+      { id: "caminhada_almoco", label: "🚶 Caminhada de 10-15 min pós-almoço" },
+      { id: "ordem_jantar", label: "🍲 Comi na Ordem Certa no Jantar" },
+      { id: "cha_noite", label: "🍵 Tomei o elixir/chá de apoio" }
+    ];
+
+    let concluidoDia = true;
+    let tarefasHtml = "";
+    tarefas.forEach(t => {
+      const key = `dia_${dia}_${t.id}`;
+      const checked = checklistSalvo[key] ? "checked" : "";
+      if (!checked) concluidoDia = false;
+      tarefasHtml += `
+        <label style="display: flex; align-items: center; gap: 10px; margin: 10px 0; font-size: 1rem; font-weight: 600; cursor: pointer;">
+          <input type="checkbox" data-key="${key}" ${checked} class="checklist-cb" style="width: 20px; height: 20px; accent-color: var(--ouro);">
+          <span>${t.label}</span>
+        </label>
+      `;
+    });
+
+    html += `
+      <div class="dia-checklist-box" style="border: 2px solid ${concluidoDia ? 'var(--verde-escuro)' : 'var(--borda-suave)'}; border-radius: 16px; padding: 18px; margin: 20px 0; background: ${concluidoDia ? '#e8f5e9' : '#fff'}; transition: all 0.3s;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed var(--borda-suave); padding-bottom: 8px; margin-bottom: 12px;">
+          <h3 style="margin: 0; font-weight: 900; color: ${concluidoDia ? 'var(--verde-escuro)' : 'var(--cor-primaria)'};">📅 Dia ${dia}</h3>
+          <span style="font-size: 0.85rem; font-weight: 800; padding: 4px 10px; border-radius: 20px; background: ${concluidoDia ? 'var(--verde-escuro)' : '#eee'}; color: ${concluidoDia ? '#fff' : '#666'};">
+            ${concluidoDia ? "✅ Concluído!" : "⏳ Em Andamento"}
+          </span>
+        </div>
+        ${tarefasHtml}
+      </div>
+    `;
+  }
+
+  html += `
+      </div>
+      ${renderizarControlesRodape("checklist-diario")}
+    </div>
+  `;
+
+  contentArea.innerHTML = html;
+
+  // Add event listeners to checkboxes
+  document.querySelectorAll(".checklist-cb").forEach(cb => {
+    cb.addEventListener("change", (e) => {
+      const key = e.target.getAttribute("data-key");
+      checklistSalvo[key] = e.target.checked;
+      localStorage.setItem("checklist_diario_completo", JSON.stringify(checklistSalvo));
+      
+      const parent = e.target.closest(".dia-checklist-box");
+      const dayCheckboxes = parent.querySelectorAll(".checklist-cb");
+      let allChecked = true;
+      dayCheckboxes.forEach(dcb => {
+        if (!dcb.checked) allChecked = false;
+      });
+
+      const headerSpan = parent.querySelector("span");
+      const headerTitle = parent.querySelector("h3");
+      if (allChecked) {
+        parent.style.borderColor = "var(--verde-escuro)";
+        parent.style.backgroundColor = "#e8f5e9";
+        headerSpan.textContent = "✅ Concluído!";
+        headerSpan.style.backgroundColor = "var(--verde-escuro)";
+        headerSpan.style.color = "#fff";
+        headerTitle.style.color = "var(--verde-escuro)";
+      } else {
+        parent.style.borderColor = "var(--borda-suave)";
+        parent.style.backgroundColor = "#fff";
+        headerSpan.textContent = "⏳ Em Andamento";
+        headerSpan.style.backgroundColor = "#eee";
+        headerSpan.style.color = "#666";
+        headerTitle.style.color = "var(--cor-primaria)";
+      }
+    });
+  });
+
+  configurarEventosRodape("checklist-diario");
+}
+

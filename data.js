@@ -1024,5 +1024,83 @@ const platformData = {
       atencao: "Embora o milho seja saudável e contenha fibras, ele tem carboidratos naturais. Consuma apenas uma fatia por vez.",
       explica: "Bolo de milho com coco é obrigatório em tarde de chuva na roça. O bolo tradicional de milho de padaria leva farinha de trigo refinada e muito açúcar, o que dá uma moleza danada à tarde. Esse nosso, batido direto com coco ralado, ovos e leite de coco, fica com textura de pamonha cremosa e não deixa a glicose dar saltos no sangue. Um carinho para o seu estômago!"
     }
-  ]
+  ],
+
+  sosGlicose: {
+    titulo: "SOS Glicose – O Que Fazer Quando Ela Passar de 180",
+    citacao: "Não se desespere, minha filha. Se o açúcar subiu, o corpo precisa de calma e do movimento certo para limpar.",
+    texto: `
+      <p>Um pico de glicose acima de 180 mg/dl pode acontecer, especialmente no começo da sua mudança de hábitos ou quando você consome algum ingrediente oculto em restaurantes. Quando isso acontece, o sangue fica mais espesso, e você pode sentir sintomas como sede excessiva, boca seca, cansaço repentino, dor de cabeça ou visão levemente embaçada.</p>
+      <p>Aqui está o protocolo de 4 passos da Dona Sebastiana para ajudar seu corpo a baixar essa glicose rapidamente, sem pânico:</p>
+      
+      <div class="card-destaque">
+        <h3>⚡ Passo 1: O Shot de Vinagre com Canela (Ação Bloqueadora)</h3>
+        <p>Dilua 1 colher de sopa de vinagre de maçã e 1/2 colher de chá de canela em pó em 150 ml de água morna ou fria. O ácido acético do vinagre ajuda a retardar o esvaziamento gástrico e melhora a sensibilidade à insulina instantaneamente, enquanto a canela ajuda a abrir os canais das células para que a glicose entre.</p>
+      </div>
+
+      <div class="card-destaque" style="border-left-color: var(--terra);">
+        <h3>🚶 Passo 2: Contrações Musculares Ativas (Queima Direta)</h3>
+        <p>Faça uma caminhada em ritmo moderado de 15 a 20 minutos imediatamente. Quando seus músculos grandes (como as pernas) entram em movimento, eles consomem a glicose diretamente do sangue para gerar energia, <strong>sem precisar de insulina</strong>. É como abrir uma porta alternativa nas suas células para o açúcar entrar.</p>
+      </div>
+
+      <div class="card-destaque">
+        <h3>💧 Passo 3: Super Hidratação (Filtro Renal)</h3>
+        <p>Beba 2 copos grandes de água pura logo em seguida. Quando a glicose passa de 180 mg/dl, ela supera o limite de absorção dos rins. O corpo tenta eliminar o excesso de açúcar através da urina. Beber água ajuda os rins a filtrarem e diluírem o sangue, eliminando a glicose extra sem te desidratar.</p>
+      </div>
+
+      <div class="card-destaque" style="border-left-color: var(--terra);">
+        <h3>🥗 Passo 4: Próxima Refeição de Proteção</h3>
+        <p>Se a sua glicose subiu, a sua próxima refeição deve ter <strong>zero carboidratos simples</strong>. Foque em comer uma boa porção de folhas verdes com azeite, seguida de proteínas limpas (como ovos ou frango). Não coma pães, arroz, frutas doces ou massas nas próximas 6 horas.</p>
+      </div>
+    `,
+    explica: "Minha filha, se a glicose subiu, não adianta ficar se culpando. Toma a sua aguinha, faz o shot de vinagre e vá dar uma volta no quarteirão ou cuidar das plantas no quintal. O movimento do corpo é o melhor remédio que Deus fez para tirar o açúcar do sangue."
+  },
+
+  listaCompras: {
+    titulo: "Lista de Compras Inteligente da Dona Sebastiana",
+    citacao: "Fazer feira com a lista certa na mão evita que você traga o pacotinho que inflama para dentro de casa.",
+    texto: `
+      <p>Esta lista foi organizada de acordo com as etapas do prato para facilitar o seu dia a dia na feira ou no supermercado. Lembre-se: dê preferência a alimentos frescos e de época.</p>
+      
+      <div class="card-destaque">
+        <h3 style="color: var(--verde-escuro);">🥗 Etapa 1: Fibras e Legumes (Comer Primeiro)</h3>
+        <ul>
+          <li><strong>Folhas verdes:</strong> Alface de todos os tipos, rúcula, agrião, couve manteiga, espinafre.</li>
+          <li><strong>Legumes para salada e refogados:</strong> Pepino, tomate, cenoura, abobrinha, berinjela, brócolis, couve-flor, repolho.</li>
+          <li><strong>Raízes amigáveis (em moderação):</strong> Abóbora cabotiá, chuchu, vagem.</li>
+        </ul>
+      </div>
+
+      <div class="card-destaque" style="border-left-color: var(--terra);">
+        <h3 style="color: var(--terra);">🍗 Etapa 2: Proteínas e Gorduras Saudáveis (Comer Segundo)</h3>
+        <ul>
+          <li><strong>Carnes brancas e ovos:</strong> Ovos caipiras, peito de frango, filés de peixe frescos.</li>
+          <li><strong>Opções práticas e baratas:</strong> Sardinha e atum em lata (conservados em azeite ou água).</li>
+          <li><strong>Gorduras de proteção:</strong> Azeite de oliva extravirgem (acidez menor que 0.8%), abacate maduro, coco seco.</li>
+          <li><strong>Oleaginosas (lanches):</strong> Castanha-do-Pará, castanha de caju, nozes, amendoim sem sal.</li>
+          <li><strong>Sementes:</strong> Chia, linhaça dourada (compre inteira e bata no liquidificador em casa).</li>
+        </ul>
+      </div>
+
+      <div class="card-destaque">
+        <h3 style="color: var(--cor-primaria);">🍚 Etapa 3: Carboidratos Inteligentes (Comer por Último)</h3>
+        <ul>
+          <li><strong>Cereais e grãos:</strong> Aveia em flocos grossos ou finos (100% pura), arroz integral, feijão (preto ou carioca), lentilha, grão-de-bico.</li>
+          <li><strong>Tubérculos amigáveis:</strong> Batata-doce, inhame, mandioquinha (batata baroa).</li>
+        </ul>
+      </div>
+
+      <div class="card-destaque" style="border-left-color: var(--terra);">
+        <h3 style="color: var(--verde-escuro);">🍵 Ingredientes para os Elixires e Goles</h3>
+        <ul>
+          <li>Limão fresco, gengibre inteiro, cúrcuma (açafrão-da-terra puro em pó), pimenta-do-reino em grãos (para moer na hora).</li>
+          <li>Vinagre de maçã de boa qualidade (preferencialmente orgânico ou não filtrado).</li>
+          <li>Canela em pó e em rama, cravos-da-índia inteiros.</li>
+          <li>Ervas secas: Boldo, carqueja, folhas de amora desidratadas, hibisco desidratado.</li>
+        </ul>
+      </div>
+    `,
+    explica: "Minha filha, encher o carrinho com comida de verdade é o primeiro passo para limpar o seu fígado. Se não está na lista da Dona Sebastiana, deixa na prateleira do mercado que o seu bolso e a sua saúde vão agradecer."
+  }
 };
+
